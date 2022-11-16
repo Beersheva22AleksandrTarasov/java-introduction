@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Iterator;
 
 public class MyArrays {
 	/**
@@ -77,7 +78,12 @@ public class MyArrays {
 				left = middle + 1;
 			}
 		}
-		return arraySorted[res] == number ? res : -1;
+		return arraySorted[res] == number ? res : -res - 1;
+	}
+
+	public static void main(String[] args) {
+		int[] arr = { -1, -2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 11 };
+		System.out.println(binarySearch(arr, 12));
 	}
 
 	/**
@@ -117,26 +123,106 @@ public class MyArrays {
 	}
 
 	/**
-	 * Write method isOneSwapForSorted in the class MyArrays that takes an array
-	 * and returns true if the array is unsorted but only one swap between two
-	 * numbers is required for getting a sorted array.
+	 * Write method isOneSwapForSorted in the class MyArrays that takes an array and
+	 * returns true if the array is unsorted but only one swap between two numbers
+	 * is required for getting a sorted array.
 	 * 
 	 * @param arrayUnSorted[]
 	 */
 
-	
-	public static int isOneSwapForSorted(int arrayUnSorted[]) {
-		int a = 0;
-		for (int i = 1; i < arrayUnSorted.length; i++) {
-			int current = arrayUnSorted[i];
-			int j = i;
-			while (j > 0 && arrayUnSorted[j - 1] > current) {
-				arrayUnSorted[j] = arrayUnSorted[j - 1];
-				j--;
-				a++;
+	public static boolean isOneSwapForSorted(int array[]) {
+
+		// The method returns true if an given array is not sorted
+		// but to do it sorted there should be done only one swap of any numbers (not
+		// mandatory
+		// that the being swapped numbers placed one after other)
+
+		int index1 = -1;
+		int index2 = -1;
+		int length = array.length - 1;
+		int equaledCount = 0;
+		boolean res = true;
+		int i = 0;
+		while (i < length && res) {
+			if (array[i] > array[i + 1]) {
+				if (index1 == -1) {
+					index1 = i - equaledCount;
+					if (equaledCount > 0) {
+						index2 = i + 1;
+					}
+				} else if (index2 != -1) {
+					res = false;
+				} else {
+					index2 = i + 1;
+				}
+			} else if (array[i] == array[i + 1]) {
+				equaledCount++;
+			} else if (array[i] < array[i + 1]) {
+				if (equaledCount != 0 && index1 != -1 && index2 == -1 && array[i] < array[index1]) {
+					index2 = i;
+				}
+				equaledCount = 0;
 			}
-			arrayUnSorted[j] = current;
+			i++;
 		}
-		return a;
+		return index1 != -1 && res ? checkIndexes(array, index1, index2) : false;
+
 	}
+
+	private static boolean checkIndexes(int[] array, int index1, int index2) {
+
+		return index2 == -1 ? checkOneIndex(array, index1) : checkTwoIndexes(array, index1, index2);
+	}
+
+	private static boolean checkTwoIndexes(int[] array, int index1, int index2) {
+
+		return (index2 == array.length - 1 || array[index1] <= array[index2 + 1]) && array[index2] <= array[index1 + 1]
+				&& (index1 == 0 || array[index2] >= array[index1 - 1]);
+
+	}
+
+	private static boolean checkOneIndex(int[] array, int index) {
+
+		return (index == array.length - 2 || array[index] <= array[index + 2])
+				&& (index == 0 || array[index + 1] >= array[index - 1]);
+	}
+
+	/**
+	 * 
+	 * @param array of short positive numbers
+	 * @param sum
+	 * @return true if array contains two numbers, sum of which equals a given sum
+	 */
+	static public boolean isSum2(short array[], short sum) {
+		boolean res = false;
+		for (int k = 0; k < array.length - 1; k++) {
+			if (res == true)
+				break;
+
+			for (int i = 1; i < array.length; i++) {
+
+				if (sum - array[k] == array[i]) 
+					res = true;
+			}
+		}
+		return res;
+	}
+	
+	
+	static public boolean isSumBoolean(short[] array, short sum) {
+		boolean res = false;
+		boolean[] isNumbers = new boolean[sum+1];
+		
+		for (int i = 0; i < array.length; i++) {
+			if (i !=0 && array[i] <= sum && isNumbers[sum - array[i]]) {
+				res = true;
+			}
+			
+			if(array[i] <= sum) {
+				isNumbers[array[i]] = true;
+		}
+			
+		}return res;
+	}
+
 }
