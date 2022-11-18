@@ -213,7 +213,14 @@ class PrimitivesTest {
 		short sum1 = 20;
 		assertEquals(true, MyArrays.isSumBoolean(array, sum));
 		assertEquals(false, MyArrays.isSumBoolean(array, sum1));
-		assertEquals(true, MyArrays.isSum2(array, sum));
-		assertEquals(false, MyArrays.isSum2(array, sum1));
+		assertEquals(true, MyArrays.isSum1(array, sum));
+		assertEquals(false, MyArrays.isSum1(array, sum1));
+		short ar[] = {1, 2, 5, 4, 5, 100, 9, 0x7fff, 1};
+		assertTrue(MyArrays.isSum2(ar, (short)101));
+		assertTrue(MyArrays.isSum2(ar, (short)11));
+		assertTrue(MyArrays.isSum2(ar, (short)14));
+		assertFalse(MyArrays.isSum2(ar, (short)8));
+		assertFalse(MyArrays.isSum2(ar, (short)2000));
+		assertTrue(MyArrays.isSum2(ar, (short)(0x7fff + 1)));
 	}
 }

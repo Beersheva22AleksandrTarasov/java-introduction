@@ -193,7 +193,7 @@ public class MyArrays {
 	 * @param sum
 	 * @return true if array contains two numbers, sum of which equals a given sum
 	 */
-	static public boolean isSum2(short array[], short sum) {
+	static public boolean isSum1(short array[], short sum) {
 		boolean res = false;
 		for (int k = 0; k < array.length - 1; k++) {
 			if (res == true)
@@ -223,6 +223,25 @@ public class MyArrays {
 		}
 			
 		}return res;
+	}
+	
+static public boolean isSum2(short array[], short sum) {
+		
+		boolean helper[] = new boolean [sum >= 0 ? sum + 1 : 0x7fff + 1];
+		boolean res = false;
+		int index = 0;
+		while(index < array.length && !res) {
+			short diff = (short) (sum - array[index]);
+			if (diff >= 0) {
+				if(helper[diff]) {
+					res =true;
+				} else {
+					helper[array[index]] = true;
+				}
+			}
+			index++;
+		}
+		return res;
 	}
 
 }
