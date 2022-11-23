@@ -21,6 +21,7 @@ class ObjectTests {
 		assertTrue(c.equals(d));
 	}
 
+	
 	@Test
 	@Disabled
 	void stringTest() {

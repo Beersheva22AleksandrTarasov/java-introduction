@@ -53,12 +53,13 @@ public class Strings {
 	}
 
 	public static String ipV4Octet() {
-		
+
 		return "\\d\\d|0|1\\d{0,2}|2([0-4]\\d|5[0-5])";
 	}
 
+
 	public static String ipV4() {
-		
+
 		return "((\\d{0,2}|0|1\\d{0,2}|2([0-4][\\d]|5[0-5]))\\.){3}([0-9]\\d|0|1\\d{0,2}|2([0-4][\\d]|5[0-5]))";
 	}
 
