@@ -52,7 +52,7 @@ public class StringsTest {
 	void ipV4OctetTest() {
 		assertTrue("0".matches(Strings.ipV4Octet()));
 		assertTrue("255".matches(Strings.ipV4Octet()));
-		assertTrue("199".matches(Strings.ipV4Octet()));
+		assertTrue("49".matches(Strings.ipV4Octet()));
 		assertTrue("249".matches(Strings.ipV4Octet()));
 		
 		assertFalse("1111".matches(Strings.ipV4Octet()));
@@ -64,7 +64,7 @@ public class StringsTest {
 	void ipV4Test() {
 		assertTrue("0.0.0.0".matches(Strings.ipV4()));
 		assertTrue("255.255.255.255".matches(Strings.ipV4()));
-		assertTrue("199.199.1.200".matches(Strings.ipV4()));
+		assertTrue("199.199.99.15".matches(Strings.ipV4()));
 		assertTrue("249.249.255.0".matches(Strings.ipV4()));
 		
 		assertFalse("1111.0.0.0".matches(Strings.ipV4()));

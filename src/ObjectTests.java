@@ -31,5 +31,4 @@ class ObjectTests {
 		assertEquals(5, hello.length());
 	}
 
-	
 }
