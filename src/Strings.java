@@ -24,7 +24,7 @@ public class Strings {
 			for (int i = 0; i < helper.length; i++)
 				if (helper[i] != 0) {
 					flag = false;
-					
+
 				}
 		}
 		return flag;
@@ -45,6 +45,21 @@ public class Strings {
 			}
 		}
 		return result;
+	}
+
+	public static String javaNameExp() {
+
+		return "[a-zA-Z$][\\w$]*|_[\\w$]+";
+	}
+
+	public static String ipV4Octet() {
+		
+		return "(0|1\\d{0,2}|2([0-4][\\d]|5[0-5]))";
+	}
+
+	public static String ipV4() {
+		
+		return "((0|1\\d{0,2}|2([0-4][\\d]|5[0-5]))\\.){3}(0|1\\d{0,2}|2([0-4][\\d]|5[0-5]))";
 	}
 
 }
