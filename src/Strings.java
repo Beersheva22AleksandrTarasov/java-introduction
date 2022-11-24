@@ -54,7 +54,7 @@ public class Strings {
 
 	public static String ipV4Octet() {
 
-		return "\\d\\d|0|1\\d{0,2}|2([0-4]\\d|5[0-5])";
+		return "\\d{0,2}|0|1\\d{0,2}|2([0-4]\\d|5[0-5])";
 	}
 
 
