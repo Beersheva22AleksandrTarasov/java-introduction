@@ -78,6 +78,6 @@ public class DigitalPrintingTest {
 	
 	@Test
 	void displayTest() {
-		displayDigitalNumber(123456, 3, 9, 7);
+		displayDigitalNumber(1234567890, 3, 9, 7);
 	}
 }
